@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jcommon-1.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-cli-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit-4.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/groovy-all-1.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jfreechart-1.0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
