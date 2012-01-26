@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <!-- ====================================================================== 
-    11.06.2007 20:30:00                                                     
-
-    Disk Usage Tool    
+    Disk Usage Tool
 
 	Copyright (C) 2007 Joern Dinkla, www.dinkla.net, joern@dinkla.net
 
@@ -44,6 +42,8 @@
     	<pathelement path="${jfreechart.jar}" />
         <pathelement path="${gpars.jar}" />
         <pathelement path="${jsr166y.jar}" />
+        <pathelement path="${extra166y.jar}" />
+        <!--pathelement path="${ivy.jar}" /-->
         <pathelement path="${classes.dir}" />
     </path>
 
@@ -55,6 +55,8 @@
 		<pathelement path="${groovy.jar}" />
         <pathelement path="${gpars.jar}" />
         <pathelement path="${jsr166y.jar}" />
+        <pathelement path="${extra166y.jar}" />
+        <!--pathelement path="${ivy.jar}" /-->
         <pathelement path="${instrumented.dir}" />
         <pathelement path="${classes.dir}" />
     </path>
@@ -217,6 +219,7 @@
     	<copy file="${jcommon.jar}" todir="${delivery.dir}/lib" />
     	<copy file="scripts/diskusage.bat" todir="${delivery.dir}" />
     	<copy file="scripts/diskusage.sh" todir="${delivery.dir}" />
+        <copy file="scripts/diskusage.groovy" todir="${delivery.dir}" />
     	<copy file="scripts/license-GPL.txt" todir="${delivery.dir}" />
     	<copy file="scripts/license-LGPL.txt" todir="${delivery.dir}" />
     	<copy file="scripts/README.txt" todir="${delivery.dir}" />
