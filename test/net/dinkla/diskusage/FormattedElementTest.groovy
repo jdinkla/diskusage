@@ -28,7 +28,7 @@ class FormattedElementTest extends GroovyTestCase {
 	final static String POINT = ','
 	
 	private Format f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12
-	private FormattedElement fe1, fe2, fe3, fe4, fe5, fe6, fe7, fe8, fe9, fe10, fe11, fe12
+	private FormattedTreeNode fe1, fe2, fe3, fe4, fe5, fe6, fe7, fe8, fe9, fe10, fe11, fe12
 	
 	void setUp() {
 		def huge = 1127000493261824
@@ -44,18 +44,18 @@ class FormattedElementTest extends GroovyTestCase {
 		f10 = new Format(Type.ABSOLUTE, Unit.MEGABYTES, false)
 		f11 = new Format(Type.ABSOLUTE, Unit.GIGABYTES, false)
 		f12 = new Format(Type.ABSOLUTE, Unit.TERABYTES, false)
-		fe1 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f1)	
-		fe2 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f2)	
-		fe3 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f3)	
-		fe4 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f4)	
-		fe5 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f5)	
-		fe6 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f6)	
-		fe7 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f7)	
-		fe8 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f8)	
-		fe9 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f9)	
-		fe10 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f10)	
-		fe11 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f11)	
-		fe12 = new FormattedElement(name: 'e1', size: huge, sum: huge, format: f12)	
+		fe1 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f1)
+		fe2 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f2)
+		fe3 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f3)
+		fe4 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f4)
+		fe5 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f5)
+		fe6 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f6)
+		fe7 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f7)
+		fe8 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f8)
+		fe9 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f9)
+		fe10 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f10)
+		fe11 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f11)
+		fe12 = new FormattedTreeNode(name: 'e1', size: huge, sum: huge, format: f12)
 	}
 
 	void testFormat() {

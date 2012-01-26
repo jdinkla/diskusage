@@ -21,12 +21,11 @@ package net.dinkla.diskusage;
 import groovy.swing.SwingBuilder
 import java.awt.*
 import java.awt.GridLayout
-import java.awt.event.ComponentListener
-import java.awt.event.WindowListener
+
 import java.beans.PropertyChangeListener
-import java.lang.reflect.Method
+
 import javax.swing.WindowConstants as WC
-import javax.swing.tree.DefaultMutableTreeNode
+
 import javax.swing.tree.DefaultTreeModel
 import javax.swing.tree.TreeSelectionModel
 import javax.swing.tree.DefaultTreeCellRenderer
@@ -36,18 +35,17 @@ import javax.swing.JOptionPane
 import javax.swing.JFileChooser
 import javax.swing.JTree
 import javax.swing.JDialog
-import javax.swing.ProgressMonitor
-import javax.swing.SwingUtilities
+
 import javax.swing.SwingConstants
 import javax.swing.BorderFactory
-import javax.swing.border.TitledBorder
+
 import javax.swing.UIManager
 import net.dinkla.macosx.OSXAdapter
 import org.jfree.chart.ChartFactory
 import org.jfree.data.general.DefaultPieDataset
-import org.jfree.data.general.PieDataset
+
 import org.jfree.chart.JFreeChart
-import org.jfree.chart.plot.PiePlot
+
 import org.jfree.chart.plot.PiePlot3D
 import org.jfree.chart.ChartPanel
 
@@ -55,6 +53,9 @@ import static Utilities.transform
 import static net.dinkla.diskusage.Type.*
 import static net.dinkla.diskusage.Unit.*
 import static javax.swing.border.TitledBorder.*
+import net.dinkla.diskusage.traversal.Directory
+import net.dinkla.diskusage.traversal.IDirectory
+import net.dinkla.diskusage.traversal.DirectoryForkJoin
 
 /**
 	DiskUsage shows JFreeChart chart diagram for a directory and its contents.
@@ -63,9 +64,11 @@ import static javax.swing.border.TitledBorder.*
 class DiskUsage implements TreeSelectionListener {
 
 	// The title
-	final protected String title = 'Disk Usage V0.2'
+	final protected String title = 'Disk Usage V0.4'
+
 	// the directory data structure
-	protected Directory directory	
+	protected IDirectory directory
+
 	// The swing builder
 	protected SwingBuilder swing
 	// The swing frame
@@ -356,7 +359,8 @@ class DiskUsage implements TreeSelectionListener {
 		// read in the new directory in a separate thread
 		Closure calculate = {
 			try {
-				directory = new Directory(fileName)
+				//directory = new Directory(fileName)
+                directory = new DirectoryForkJoin(fileName)
 				treeModel = new DefaultTreeModel(transform(directory.root), false)
 			} catch ( AssertionError e) {
 				directory = null
@@ -390,7 +394,7 @@ class DiskUsage implements TreeSelectionListener {
 	/**
 		Updates the PieDataSet.
 	*/
-	private void updatePieDataSet(Element node) {
+	private void updatePieDataSet(TreeNode node) {
 		assert node
 		piedataset.clear()
 		directory.root.clear()
@@ -440,7 +444,7 @@ class DiskUsage implements TreeSelectionListener {
 	*/
 	void about() {
 	    JOptionPane.showMessageDialog(frame, 
-'''Disk Usage Chart Tool. Version 0.3. (c) 2007, 2008 Joern Dinkla (http://www.dinkla.net).
+'''Disk Usage Chart Tool. Version 0.4. (c) 2007, 2008, 2012 Joern Dinkla (http://www.dinkla.net).
 Written in Groovy (http://groovy.codehaus.org).
 The chart is drawn using the JFreeChart library (http://www.jfree.org/jfreechart/).
 ''',

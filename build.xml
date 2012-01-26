@@ -42,6 +42,8 @@
 		<pathelement path="${junit.jar}/" />
     	<pathelement path="${jcommon.jar}" />
     	<pathelement path="${jfreechart.jar}" />
+        <pathelement path="${gpars.jar}" />
+        <pathelement path="${jsr166y.jar}" />
         <pathelement path="${classes.dir}" />
     </path>
 
@@ -51,6 +53,8 @@
     	<pathelement path="${jcommon.jar}" />
     	<pathelement path="${jfreechart.jar}" />
 		<pathelement path="${groovy.jar}" />
+        <pathelement path="${gpars.jar}" />
+        <pathelement path="${jsr166y.jar}" />
         <pathelement path="${instrumented.dir}" />
         <pathelement path="${classes.dir}" />
     </path>
@@ -61,7 +65,7 @@
     	<pathelement path="${commons-cli.jar}" />
     </path>
 
-	<taskdef classpathref="classpath.cobertura" resource="tasks.properties"/>
+	<!-- taskdef classpathref="classpath.cobertura" resource="tasks.properties"/ -->
 	<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" classpath="${groovy.jar}"/>
 	<taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="classpath.groovy"/>
 
@@ -117,13 +121,13 @@
     	<delete file="${cobertura.ser}" />
     	
     	<!--delete dir="${instrumented.dir}" /-->
-    	<cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.ser}">
+    	<!--cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.ser}">
     		<fileset dir="${classes.dir}">
 	            <include name="**/*.class" />
 	            <exclude name="**/*Test.class" />
 	            <exclude name="**/*Test$_*.class" />
             </fileset>
-    	</cobertura-instrument>
+    	</cobertura-instrument-->
     </target>
 	
 	<!-- ================================= 
@@ -131,9 +135,9 @@
          ================================= -->
     <target name="test.unit" depends="compile" description="Runs the JUnit tests">
         <junit fork="true" errorproperty="test.failed" failureproperty="test.failed">
-        	<sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser}" />
+        	<!--sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser}" /-->
         	<classpath refid="classpath.junit" />
-			<classpath refid="classpath.cobertura" />
+			<!--classpath refid="classpath.cobertura" /-->
             <formatter type="brief" usefile="false"/>
             <formatter type="xml" />
             <batchtest todir="${reports.xml.dir}">
@@ -157,7 +161,7 @@
           target: report              
          ================================= -->
     <target name="report" depends="instrument,test.unit" description="Creates cobertura reports">
-        <cobertura-report srcdir="${src.dir}" destdir="${coverage.html.dir}" datafile="${cobertura.ser}">
+        <!--cobertura-report srcdir="${src.dir}" destdir="${coverage.html.dir}" datafile="${cobertura.ser}">
             <fileset dir="${src.dir}">
             	<include name="**/*.java" />
 				<include name="**/*.groovy" />
@@ -168,7 +172,7 @@
             	<include name="**/*.java" />
 				<include name="**/*.groovy" />
            	</fileset>
-        </cobertura-report>
+        </cobertura-report-->
     </target>
 
 	<!-- ================================= 

@@ -29,7 +29,7 @@ class Format {
 	final Type type
 	final Unit unit
 	final boolean showUnits
-	final NumberFormat formatter
+	NumberFormat formatter
 
 	/**
 		TODO DecimalFormat should not be constructed, see Javadoc on NumberFormat
@@ -59,7 +59,7 @@ class Format {
 			result = name +  ' [' + formatter.format(value) + ' %]'
 			break
 		default:
-			throw new RuntimeException("FormattedElement contains format ${format}")
+			throw new RuntimeException("FormattedTreeNode contains format ${format}")
 		}
 		return result
 	}

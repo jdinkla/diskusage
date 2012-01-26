@@ -1,1 +1,1 @@
-@java -Xms512m -Xmx1024m -jar diskusage-0.3.jar
+@java -Xms512m -Xmx1024m -jar diskusage-0.4.jar

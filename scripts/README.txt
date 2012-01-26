@@ -5,15 +5,15 @@ of the JFreeChart library.
 
 The following two jar files
 
-lib/jcommon-1.0.9.jar
-lib/jfreechart-1.0.5.jar
+lib/jcommon-1.0.17.jar
+lib/jfreechart-1.0.14.jar
 
 are taken from the JFreeChart distribution, downloadable from http://www.jfree.org/jfreechart/
 and published under the LGPL (see license-LGPL.txt).
 
 For all the source code in this directory the following copyright notice applies. 
 
-	Copyright (c) 2007, 2008 Joern Dinkla, www.dinkla.net, joern@dinkla.net
+	Copyright (c) 2007, 20008, 2012 Joern Dinkla, www.dinkla.net, joern@dinkla.net
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License

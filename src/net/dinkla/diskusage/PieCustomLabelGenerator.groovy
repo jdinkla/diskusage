@@ -22,9 +22,6 @@ import java.text.AttributedString
 import org.jfree.chart.labels.PieSectionLabelGenerator
 import org.jfree.data.general.PieDataset
 
-/**
-	TODO V0.2
-*/
 class PieCustomLabelGenerator implements PieSectionLabelGenerator {
 
      public String generateSectionLabel(PieDataset piedataset, Comparable comparable) {

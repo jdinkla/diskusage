@@ -52,12 +52,19 @@ class Utilities {
 	/**
 	 * Transforms the node and it's childs into a swing tree model.
 	 */
-	static DefaultMutableTreeNode transform(Element element) {
+	static DefaultMutableTreeNode transform(TreeNode element) {
 		DefaultMutableTreeNode node = new DefaultMutableTreeNode(element);
 		for (child in element.children) {
 			if ( child.isDirectory ) node.add(transform(child))
 		}
 		return node
 	}
+
+    /*
+     * Returns the time.
+     */
+    static long getTime() {
+        System.currentTimeMillis()
+    }
 
 }
