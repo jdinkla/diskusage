@@ -53,9 +53,11 @@ import static Utilities.transform
 import static net.dinkla.diskusage.Type.*
 import static net.dinkla.diskusage.Unit.*
 import static javax.swing.border.TitledBorder.*
-import net.dinkla.diskusage.traversal.Directory
+
 import net.dinkla.diskusage.traversal.IDirectory
 import net.dinkla.diskusage.traversal.DirectoryForkJoin
+import net.dinkla.diskusage.traversal.Directory
+import javax.swing.JFrame
 
 /**
 	DiskUsage shows JFreeChart chart diagram for a directory and its contents.
@@ -63,16 +65,15 @@ import net.dinkla.diskusage.traversal.DirectoryForkJoin
 
 class DiskUsage implements TreeSelectionListener {
 
-	// The title
-	final protected String title = 'Disk Usage V0.4'
+    protected static final boolean MAC_OS_X = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
+    protected static final String TITLE = 'Disk Usage V0.4'
 
 	// the directory data structure
 	protected IDirectory directory
-
 	// The swing builder
 	protected SwingBuilder swing
 	// The swing frame
-	protected def frame
+	protected JFrame frame
 	// The swing tree
 	protected JTree tree
 	// The dialog for the waiting message
@@ -89,10 +90,7 @@ class DiskUsage implements TreeSelectionListener {
 	protected Format previousFormat
 	// The maximal number of elements in a chart
 	protected int maxElements = 5
-	// Do we run on a Mac ?
-	//protected final static boolean MAC_OS_X = (System.getProperty('mrj.version') != null)
-	protected static boolean MAC_OS_X = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
-	
+
 	/**
 		Constructor.
 	*/
@@ -280,7 +278,7 @@ class DiskUsage implements TreeSelectionListener {
 				options: ['OK'],
 				optionType: JOptionPane.OK_OPTION
 				)
-		dialogProgress = pane.createDialog(frame, title)
+		dialogProgress = pane.createDialog(frame, TITLE)
      	// the user should not be able to close the dialog
      	dialogProgress.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
      	dialogProgress.setModal(true)
@@ -290,7 +288,7 @@ class DiskUsage implements TreeSelectionListener {
 
         // The main window / frame
 		frame = swing.frame(
-				title: title, 
+				title: TITLE,
 				layout: new GridLayout(1,1), 
 				minimumSize: [width: 600, height: 500],
 				defaultCloseOperation:WC.EXIT_ON_CLOSE) {
@@ -348,6 +346,17 @@ class DiskUsage implements TreeSelectionListener {
 		}
 	}
 
+    private IDirectory createDirectory(final String fileName) {
+        IDirectory dir = null
+        if (Utilities.hasForkJoinPool()) {
+            dir = new DirectoryForkJoin(fileName)
+            frame.title = TITLE + ' [ForkJoin]'
+        } else {
+            dir = new Directory(fileName)
+            frame.title = TITLE + ' [Sequential]'
+        }
+        return dir
+    }
 	/**
 		Sets the new directory and updates everything.
 	*/
@@ -360,7 +369,7 @@ class DiskUsage implements TreeSelectionListener {
 		Closure calculate = {
 			try {
 				//directory = new Directory(fileName)
-                directory = new DirectoryForkJoin(fileName)
+                directory = createDirectory(fileName)
 				treeModel = new DefaultTreeModel(transform(directory.root), false)
 			} catch ( AssertionError e) {
 				directory = null

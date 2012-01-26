@@ -18,7 +18,8 @@
 
 package net.dinkla.diskusage.traversal
 
-import net.dinkla.diskusage.Utilities;
+import net.dinkla.diskusage.Utilities
+import org.junit.Ignore;
 
 /**
 	Unit test for class Directory
@@ -34,7 +35,8 @@ class DirectoryTest extends GroovyTestCase {
         def d = new Directory(".")
 	}
 
-    void testPerformance() {
+    @Ignore
+    void XtestPerformance() {
         final long t1 = Utilities.getTime()
         def d = new Directory(DIRECTORY)
         final long t2 = Utilities.getTime()

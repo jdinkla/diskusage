@@ -17,7 +17,8 @@
 */
 
 package net.dinkla.diskusage.traversal
-import net.dinkla.diskusage.Utilities;
+import net.dinkla.diskusage.Utilities
+import org.junit.Ignore;
 
 class DirectoryForkJoinTest extends GroovyTestCase {
 
@@ -35,7 +36,8 @@ class DirectoryForkJoinTest extends GroovyTestCase {
         assert (d1.root.size() == d2.root.size())
     }
 
-    void testPerformance() {
+    @Ignore
+    void XtestPerformance() {
         final long t1 = Utilities.getTime()
         def d = new DirectoryForkJoin(DIRECTORY)
         final long t2 = Utilities.getTime()

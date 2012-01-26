@@ -21,5 +21,9 @@ class UtilitiesTest extends GroovyTestCase {
 		assertEquals("D:\\folder\\abcdef\\abcde", Utilities.fixUnix2Win("D:/folder/abcdef/abcde"))
 	}
 
+    void testGetVersion() {
+        def ls = Utilities.getJavaVersion()
+        assert ls.size() == 3
+     }
 
 }

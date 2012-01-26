@@ -67,4 +67,15 @@ class Utilities {
         System.currentTimeMillis()
     }
 
+    static List<Integer> getJavaVersion() {
+        String version = System.getProperty("java.version")
+        version = version.replaceAll('\\_.*', '')
+        def ls = version.split('\\.')
+        return ls
+    }
+
+    static boolean hasForkJoinPool() {
+        def ls = getJavaVersion()
+        ls[0] >= 1 && ls[1] >= 7
+    }
 }
