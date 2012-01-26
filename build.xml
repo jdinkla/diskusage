@@ -214,10 +214,10 @@
          ================================= -->
     <target name="delivery" depends="test.unit,jar" description="Builds the delivery">
     	<mkdir dir="${delivery.dir}/lib" />
-        <copy file="${groovy.jar}" todir="${delivery.dir}/lib" />
     	<copy file="${jfreechart.jar}" todir="${delivery.dir}/lib" />
     	<copy file="${jcommon.jar}" todir="${delivery.dir}/lib" />
     	<copy file="scripts/diskusage.bat" todir="${delivery.dir}" />
+        <fixcrlf srcdir="scripts" includes="diskusage.sh" eol="lf" eof="remove" />
     	<copy file="scripts/diskusage.sh" todir="${delivery.dir}" />
         <copy file="scripts/diskusage.groovy" todir="${delivery.dir}" />
     	<copy file="scripts/license-GPL.txt" todir="${delivery.dir}" />
