@@ -89,7 +89,7 @@ class DiskUsage implements TreeSelectionListener {
 	// The previous format of the elements
 	protected Format previousFormat
 	// The maximal number of elements in a chart
-	protected int maxElements = 5
+	protected int maxElements = 15
 
 	/**
 		Constructor.
