@@ -19,13 +19,15 @@
 package net.dinkla.diskusage;
 
 /**
-TODO locale , vs. .
-
-*/
+ *
+ * These tests will fail for all locales that have a different decimal point than POINT.
+ *
+ * TODO fix locale , vs. .
+ */
 
 class FormattedElementTest extends GroovyTestCase {
 
-	final static String POINT = ','
+	final static String POINT = '.'
 	
 	private Format f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12
 	private FormattedTreeNode fe1, fe2, fe3, fe4, fe5, fe6, fe7, fe8, fe9, fe10, fe11, fe12
@@ -62,16 +64,16 @@ class FormattedElementTest extends GroovyTestCase {
 		assertEquals('e1', fe1.format())
 		assertEquals('e1 [100' + POINT + '000 %]', fe2.format())
 		assertEquals('e1 [1127000493261824 Bytes]', fe3.format())
-		assertEquals('e1 [1074791425,00098 KB]', fe4.format())
-		assertEquals('e1 [1025,00098 MB]', fe5.format())
-		assertEquals('e1 [0,00098 GB]', fe6.format())
-		assertEquals('e1 [0,0 TB]', fe7.format())
+		assertEquals('e1 [1074791425' + POINT + '00098 KB]', fe4.format())
+		assertEquals('e1 [1025' + POINT + '00098 MB]', fe5.format())
+		assertEquals('e1 [0' + POINT + '00098 GB]', fe6.format())
+		assertEquals('e1 [0' + POINT + '0 TB]', fe7.format())
 		
 		assertEquals('e1 [1127000493261824]', fe8.format())
-		assertEquals('e1 [1074791425,00098]', fe9.format())
-		assertEquals('e1 [1025,00098]', fe10.format())
-		assertEquals('e1 [0,00098]', fe11.format())
-		assertEquals('e1 [0,0]', fe12.format())
+		assertEquals('e1 [1074791425' + POINT + '00098]', fe9.format())
+		assertEquals('e1 [1025' + POINT + '00098]', fe10.format())
+		assertEquals('e1 [0' + POINT + '00098]', fe11.format())
+		assertEquals('e1 [0' + POINT + '0]', fe12.format())
 	}
 	
 }

@@ -453,7 +453,7 @@ class DiskUsage implements TreeSelectionListener {
 	*/
 	void about() {
 	    JOptionPane.showMessageDialog(frame, 
-'''Disk Usage Chart Tool. Version 0.4. (c) 2007, 2008, 2012 Joern Dinkla (http://www.dinkla.net).
+'''Disk Usage Chart Tool. Version 0.5. (c) 2007, 2008, 2012, 2015 Joern Dinkla (http://www.dinkla.net).
 Written in Groovy (http://groovy.codehaus.org).
 The chart is drawn using the JFreeChart library (http://www.jfree.org/jfreechart/).
 ''',

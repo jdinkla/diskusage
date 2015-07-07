@@ -19,13 +19,14 @@
 package net.dinkla.diskusage;
 
 /**
-TODO locale , vs. .
-
-*/
+ * These tests will fail for all locales that have a different decimal point than POINT.
+ *
+ * TODO fix locale , vs. .
+ */
 
 class FormatTest extends GroovyTestCase {
 
-	final static String POINT = ','
+	final static String POINT = '.'
 	
 	private Format f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12
 
@@ -49,9 +50,9 @@ class FormatTest extends GroovyTestCase {
 		assertEquals('e1', f1.format('e1', 0.0))
 		assertEquals('e1 [100' + POINT + '000 %]', f2.format('e1', 100))
 		assertEquals('e1 [1127000493261824 Bytes]', f3.format('e1', huge))
-		assertEquals('e1 [1100586419201,0 KB]', f4.format('e1', huge))
+		assertEquals('e1 [1100586419201' + POINT + '0 KB]', f4.format('e1', huge))
 		assertEquals('e1 [1127000493261824]', f8.format('e1', huge))
-		assertEquals('e1 [1100586419201,0]', f9.format('e1', huge))
+		assertEquals('e1 [1100586419201' + POINT + '0]', f9.format('e1', huge))
 	}
 	
 }

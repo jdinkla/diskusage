@@ -14,6 +14,12 @@ for more information.
 Usage
 -----
 
+You need [gradle](https://gradle.org/) to build this application
+
+```
+$ gradle exec
+```
+
 
 ---
 
