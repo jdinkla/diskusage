@@ -66,7 +66,7 @@ import javax.swing.JFrame
 class DiskUsage implements TreeSelectionListener {
 
     protected static final boolean MAC_OS_X = (System.getProperty("os.name").toLowerCase().startsWith("mac os x"));
-    protected static final String TITLE = 'Disk Usage V0.4'
+    protected static final String TITLE = 'Disk Usage V0.5'
 
 	// the directory data structure
 	protected IDirectory directory

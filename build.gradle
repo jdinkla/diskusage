@@ -1,0 +1,44 @@
+group 'net.dinkla.diskusage'
+version '0.5'
+
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.6
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src']
+        }
+    }
+
+    test {
+        groovy {
+            srcDirs = ['test']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.3'
+    compile 'org.jfree:jfreechart:1.0.14'
+    compile 'org.codehaus.gpars:gpars:1.2.1'
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'net.dinkla.diskusage.DiskUsage'
+    }
+}
+
+task exec(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = "net.dinkla.diskusage.DiskUsage"
+}
+
+
