@@ -10,7 +10,7 @@ See
 [my web page](http://dinkla.net/en/programming/groovy-diskusage.html)
 for more information.
 
-![GUI](http://dinkla.net/images/disk_usage_macosx.png)
+![GUI](http://dinkla.net/images/disk_usage_macosx.webp)
 
 
 Usage
